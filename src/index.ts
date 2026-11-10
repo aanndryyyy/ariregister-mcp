@@ -36,6 +36,7 @@ const handle = serveStdio(
         title: "Äriregister (e-Business Register)",
         version,
         description,
+        websiteUrl: "https://github.com/aanndryyyy/ariregister-mcp",
         icons: [icon],
       },
       {

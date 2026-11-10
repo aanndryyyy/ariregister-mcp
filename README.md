@@ -51,13 +51,12 @@ Environment variables take precedence over the Keychain.
 
 ## Setup
 
-**Claude Code** (from a local clone)
+**Claude Code**
 
 ```bash
-cd ariregister-mcp && npm install   # builds dist/ automatically
-claude mcp add -s user ariregister -- node "$PWD/dist/index.js"
+claude mcp add -s user ariregister -- npx -y github:aanndryyyy/ariregister-mcp
 # or, with credentials in the config instead of the Keychain:
-claude mcp add -s user ariregister -e ARIREGISTER_API_KEY=xxx -e ARIREGISTER_USERNAME=xxx -e ARIREGISTER_PASSWORD=xxx -- node "$PWD/dist/index.js"
+claude mcp add -s user ariregister -e ARIREGISTER_API_KEY=xxx -e ARIREGISTER_USERNAME=xxx -e ARIREGISTER_PASSWORD=xxx -- npx -y github:aanndryyyy/ariregister-mcp
 ```
 
 **Claude Desktop, Cursor, and other clients using `mcpServers` JSON**
@@ -66,12 +65,22 @@ claude mcp add -s user ariregister -e ARIREGISTER_API_KEY=xxx -e ARIREGISTER_USE
 {
   "mcpServers": {
     "ariregister": {
-      "command": "node",
-      "args": ["/path/to/ariregister-mcp/dist/index.js"],
+      "command": "npx",
+      "args": ["-y", "github:aanndryyyy/ariregister-mcp"],
       "env": { "ARIREGISTER_API_KEY": "xxx", "ARIREGISTER_USERNAME": "xxx", "ARIREGISTER_PASSWORD": "xxx" }
     }
   }
 }
+```
+
+Leave out `env` if the credentials are in the Keychain, or entirely if you only need the public tools.
+
+**From a local clone**
+
+```bash
+git clone https://github.com/aanndryyyy/ariregister-mcp.git
+cd ariregister-mcp && npm install   # builds dist/ automatically
+claude mcp add -s user ariregister -- node "$PWD/dist/index.js"
 ```
 
 ### Environment variables

@@ -30,6 +30,10 @@
   ],
   "author": "Andry Pedak",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aanndryyyy/ariregister-mcp.git"
+  },
   "engines": {
     "node": ">=20"
   },
