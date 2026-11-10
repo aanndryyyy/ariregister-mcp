@@ -243,7 +243,9 @@ export function registerTools(server: McpServer, client: AriregClient): void {
       description:
         "Who may represent companies, and how (REST, needs an API key): persons with their role and whether they can " +
         "act alone (`exclusiveRightOfRepresentation`), plus special conditions and joint-representation groups. Search " +
-        "by a person or company (`entity_code` = personal code or registry code), or by name.",
+        "by the REPRESENTATIVE: a person's identification code, or a company's registry code with person_type J when " +
+        "the representative is itself a company, or by name. For who can represent a given company, use get_company " +
+        "with include ['related_persons'] instead.",
       inputSchema: z.object({
         entity_code: z.string().optional().describe("Personal identification code or company registry code."),
         entity_code_country: country3.optional(),
