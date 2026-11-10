@@ -1,0 +1,46 @@
+{
+  "name": "ariregister-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for the Estonian e-Business Register (Äriregister, RIK): public company search and e-invoice checks, plus company data, people, representation rights, annual reports and beneficial owners with an RIK API contract.",
+  "type": "module",
+  "bin": {
+    "ariregister-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "assets",
+    "spec",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepare": "tsc",
+    "start": "node dist/index.js",
+    "test": "npm run build && node scripts/smoke.mjs"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "ariregister",
+    "e-business-register",
+    "rik",
+    "estonia",
+    "company-data"
+  ],
+  "author": "Andry Pedak",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "^2.4.0",
+    "fast-xml-parser": "^5.12.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/client": "^2.4.0",
+    "@types/node": "^24.19.2",
+    "typescript": "^7.0.2"
+  }
+}
