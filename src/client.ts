@@ -102,6 +102,8 @@ const xml = new XMLParser({
   ignoreAttributes: true,
   // Keep values as text: codes like "01" or registry codes must not turn into numbers.
   parseTagValue: false,
+  // xsd:date values come as '2025-01-01Z'; a plain date reads better.
+  tagValueProcessor: (_name, value) => (/^\d{4}-\d{2}-\d{2}Z$/.test(value) ? value.slice(0, -1) : value),
   isArray: (name) => LIST_TAGS.has(name),
 });
 
