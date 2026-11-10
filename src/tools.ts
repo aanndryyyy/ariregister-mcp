@@ -323,7 +323,7 @@ export function registerTools(server: McpServer, client: AriregClient): void {
       title: "Get beneficial owners",
       description:
         "A company's beneficial owners (REST, needs an API key and a contract that grants beneficial-owner access). " +
-        "Since 10.07.2026 this data is not public: access needs a legal basis (e.g. a competent authority, an obliged " +
+        "This data is restricted: access needs a legal basis (e.g. a competent authority, an obliged " +
         "entity under the AML act, or a legitimate interest), and RIK logs every lookup together with the requester's " +
         "identity. The requester fields describe the PERSON MAKING THE QUERY and must be the real user's own details; " +
         "ask the user for them and never guess or fill them in from other context.",
