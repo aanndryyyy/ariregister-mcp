@@ -96,8 +96,8 @@ export function registerTools(server: McpServer, client: AriregClient): void {
       title: "Check e-invoice recipients",
       description:
         "Check whether companies are in the e-invoice recipient register, i.e. whether you can send them a machine-" +
-        "readable e-invoice through an operator. Public, no account needed. Status OK = registered recipient (with its " +
-        "operator in `service_provider`), MR = not registered.",
+        "readable e-invoice through an operator. Public, no account needed. Status OK = has a valid link in the " +
+        "e-invoice register (operator in `service_provider`), MR = registry code not found in the e-invoice register.",
       inputSchema: z.object({
         registry_codes: z.array(registryCode).min(1).max(100).describe("1–100 registry codes."),
         include_names: z.boolean().optional().describe("Also return company names (default false)."),
@@ -473,7 +473,8 @@ export function registerTools(server: McpServer, client: AriregClient): void {
       title: "List company documents",
       description:
         "Documents in a company's public file (XML service, needs contract username and password): annual reports as " +
-        "PDF, BDOC/DDOC and XBRL, and articles of association, with download URLs. Document types: A = annual report " +
+        "PDF, BDOC/DDOC and XBRL, and articles of association, with their e-Business Register URLs (opening one " +
+        "needs a login there; this tool never requests the paid access token that would buy the document). Document types: A = annual report " +
         "PDF, D = BDOC/DDOC, X = XBRL, P = articles of association. Report types: A = annual, V = interim, L = " +
         "liquidation, P = final.",
       inputSchema: z.object({
@@ -554,7 +555,8 @@ export function registerTools(server: McpServer, client: AriregClient): void {
         "(companies changed on a date), kandedMaarused_v1 (entries and rulings for a day), aruandeMyygituluEMTAKjargi_v1 " +
         "(revenue by activity), detailandmed_v2. Your contract username and password are added automatically. `body` " +
         "holds the fields of `keha` as JSON: arrays repeat an element, objects nest. Field names and required fields are " +
-        "in the per-query docs at https://avaandmed.ariregister.rik.ee/en/open-data-api/introduction-api-services; the " +
+        "in the per-query docs at https://avaandmed.ariregister.rik.ee/en/open-data-api/introduction-api-services; send " +
+        "them in the order the docs list them. The " +
         "service rejects a request that leaves out a field it requires, even one with a documented default. The " +
         "response is the `keha` element as JSON with all values as text.",
       inputSchema: z.object({

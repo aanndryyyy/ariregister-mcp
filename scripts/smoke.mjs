@@ -1,7 +1,7 @@
 // End-to-end smoke test: spawns the built server over stdio with the official MCP client and calls the tools against
 // the live e-Business Register. Public tools always run. REST tools run when ARIREGISTER_API_KEY is set (or a Keychain
-// entry exists), XML tools when ARIREGISTER_USERNAME / ARIREGISTER_PASSWORD are set; otherwise they must fail with
-// CREDENTIALS_MISSING. Everything is read-only. Set SKIP_KEYCHAIN=1 to test the no-credentials path on a Mac that has them.
+// entry exists), XML tools when ARIREGISTER_USERNAME / ARIREGISTER_PASSWORD are set (HAS_KEYCHAIN_REST=1 / HAS_KEYCHAIN_XML=1 when
+// they come from the Keychain); otherwise they must fail with CREDENTIALS_MISSING. Everything is read-only.
 import { Client } from "@modelcontextprotocol/client";
 import { StdioClientTransport } from "@modelcontextprotocol/client/stdio";
 
